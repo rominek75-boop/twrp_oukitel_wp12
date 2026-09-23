@@ -2,8 +2,10 @@ name: twrp.yml
 
 on:
   push:
-    branches: [ main ] # Kompilace se spusti automaticky hned po ulozeni souboru v main
-  workflow_dispatch:   # Zustane i moznost rucniho spusteni
+    branches:
+      - main
+      - master
+  workflow_dispatch:
 
 jobs:
   build:
@@ -33,8 +35,7 @@ jobs:
         git config --global user.email "action@github.com"
         mkdir twrp-workspace
         cd twrp-workspace
-        # OPRAVENÁ ADRESA REPOZITÁŘE
-        repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+        repo init --depth=1 -u https://github.com -b twrp-12.1
         repo sync -c -j$(nproc) --no-clone-bundle --no-tags --force-sync
 
     - name: Priprava Device Tree (Oukitel WP12)
