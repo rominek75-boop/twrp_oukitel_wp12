@@ -1,0 +1,12 @@
+# Android fstab file for TWRP recovery partitions layout
+# <src>                                       <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/by-name/boot_a                     /boot        emmc    defaults                                    slotselect
+/dev/block/by-name/boot_b                     /boot        emmc    defaults                                    slotselect
+/dev/block/by-name/system                     /system      ext4    ro,barrier=1                                logical,first_stage_mount
+/dev/block/by-name/vendor                     /vendor      ext4    ro,barrier=1                                logical,first_stage_mount
+/dev/block/by-name/product                    /product     ext4    ro,barrier=1                                logical,first_stage_mount
+/dev/block/by-name/userdata                   /data        ext4    noatime,nosuid,nodev,barrier=1,data=ordered  wait,check,formattable
+/dev/block/mmcblk1p1                          /external_sd vfat    defaults                                    voldmanaged=sdcard1:auto
+/dev/block/by-name/nvram                      /nvram       emmc    defaults                                    defaults
+/dev/block/by-name/protect1                   /protect_f   emmc    defaults                                    defaults
+/dev/block/by-name/protect2                   /protect_s   emmc    defaults                                    defaults
